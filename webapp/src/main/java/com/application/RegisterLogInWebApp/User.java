@@ -6,25 +6,32 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
 public class User {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer id = 0;
 	
-	@Column(nullable = false, unique = true)
+	@Column(name = "email", nullable = false, unique = true)
+	@Email
+	@Size(min =  13, message = "Email's must be between 13 and 64 characters")
 	private String email;
-	
-	@Column(nullable = false, length = 64) // check how did I do min and max lengths in official guide
+	//message = "Password's length must be between 5 and 64 characters"
+
+	@Column(name = "password", nullable = false, length = 64) // check if it will add to database before check of after
+	@Size(min = 5, max = 64)
 	private String password;
 	
-	@Column(nullable = false, length = 20)
+	@Column(name = "firstName", nullable = false, length = 20)
+	@Size(min = 3, max = 20, message = "First name's length must be between 3 and 20 characters")
 	private String firstName;
 	
-	@Column(nullable = false, length = 20)
+	@Column(name = "lastName", nullable = false, length = 20)
+	@Size(min = 2, max = 20, message = "Last name's length must be between 2 and 20 characters")
 	private String lastName;
 
 	public Integer getId() {
