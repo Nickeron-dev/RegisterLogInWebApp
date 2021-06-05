@@ -1,5 +1,7 @@
 package com.application.RegisterLogInWebApp;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +35,37 @@ public class AppController {
 	@PostMapping("/register")
 	public String registerSubmit(@ModelAttribute User newUser, Model model) {
 		model.addAttribute("user", newUser);
-		newUser.setId(newUser.getId() + 1);
+		
+		System.out.println("Email: " + newUser.getEmail().length() + " F name: " + newUser.getFirstName().length() + " L name: " + newUser.getLastName().length() + " Pass: " + newUser.getPassword().length());
+		
+		
+		// checking all possible issues
+		List<User> users = repository.findAll();
+		
+		for (int i = 0; i < users.size(); i++) {
+			if (users.get(i).getEmail().equals(newUser.getEmail()) ) {
+				return "erroranother";	// if an email has already been used
+			}
+		}
+		
+		if (newUser.getEmail().length() < 13) {
+			return "erroranother";
+		}
+		
+		if (newUser.getFirstName().length() < 2 || newUser.getFirstName().length() > 20) {
+			return "erroranother";
+		}
+		
+		if (newUser.getLastName().length() < 2 || newUser.getLastName().length() > 20) {
+			return "erroranother";
+		}
+		
+		if (newUser.getPassword().length() < 5 || newUser.getPassword().length() > 64) {
+			return "erroranother";
+		}
+		
 		repository.save(newUser);
-
+		
 		
 		return "registerresult";
 		
@@ -43,8 +73,6 @@ public class AppController {
 	
 	@GetMapping("/error")
 	public String error() {
-		User user = new User();
-		System.out.println("sdjakljkfdls" + user.getId());
 		return "error";
 	}
 	

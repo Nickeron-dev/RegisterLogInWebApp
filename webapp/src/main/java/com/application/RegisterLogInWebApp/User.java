@@ -14,24 +14,19 @@ import javax.validation.constraints.Size;
 public class User {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id = 0;
 	
 	@Column(name = "email", nullable = false, unique = true)
-	@Email
-	@Size(min =  13, message = "Email's must be between 13 and 64 characters")
 	private String email;
-	//message = "Password's length must be between 5 and 64 characters"
 
-	@Column(name = "password", nullable = false, length = 64) // check if it will add to database before check of after
-	@Size(min = 5, max = 64)
+	@Column(name = "password", nullable = false, length = 64) // when it already exists handle error
 	private String password;
 	
 	@Column(name = "firstName", nullable = false, length = 20)
-	@Size(min = 3, max = 20, message = "First name's length must be between 3 and 20 characters")
 	private String firstName;
 	
 	@Column(name = "lastName", nullable = false, length = 20)
-	@Size(min = 2, max = 20, message = "Last name's length must be between 2 and 20 characters")
 	private String lastName;
 
 	public Integer getId() {
