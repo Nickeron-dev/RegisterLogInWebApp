@@ -18,13 +18,20 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="user: ${listUsers}">
+			<tr th:each="user: ${users}">
 				<td th:text="${user.id}">User Id</td>
 				<td th:text="${user.email}">Email</td>
 				<td th:text="${user.firstName}">First Name</td>
 				<td th:text="${user.lastName}">Last Name</td>
 				<td th:text="${user.password}">Password</td>
 			</tr>
+			<!--<c:forEach var="listValue" items="${User}">
+            	<td>${user.id}</td>
+            	<td>${user.email}</td>
+            	<td>${user.firstName}</td>
+            	<td>${user.lastName}</td>
+            	<td>${user.password}</td>
+        	</c:forEach>-->
 		</tbody>
 	</table>
 </body>

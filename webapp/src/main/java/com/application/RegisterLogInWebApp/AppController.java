@@ -84,10 +84,6 @@ public class AppController {
 			}
 		}
 		
-		if (result.hasErrors()) {
-			return "login";
-		}
-		
 		model.addAttribute("user", user);
 		
 		
