@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -17,15 +18,23 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id = 0;
 	
+	@NotEmpty(message = "User's email cannot be empty.")
+    @Size(min = 13, max = 255)
 	@Column(name = "email", nullable = false, unique = true)
 	private String email;
-
+	
+	@NotEmpty(message = "User's password cannot be empty.")
+    @Size(min = 5, max = 64)
 	@Column(name = "password", nullable = false, length = 64) // when it already exists handle error
 	private String password;
 	
+	@NotEmpty(message = "User's first name cannot be empty.")
+    @Size(min = 2, max = 20)
 	@Column(name = "firstName", nullable = false, length = 20)
 	private String firstName;
 	
+	@NotEmpty(message = "User's last name cannot be empty.")
+    @Size(min = 2, max = 20)
 	@Column(name = "lastName", nullable = false, length = 20)
 	private String lastName;
 

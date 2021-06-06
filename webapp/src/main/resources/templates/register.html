@@ -9,11 +9,13 @@
 		<h1>Register</h1>
 	<form action="#" th:action="@{/register}" th:object="${user}" method="post">
 		<p>Email: <input type="text" th:field="*{email}" /></p>
-		
+		<p th:if="${#fields.hasErrors('email')}" th:class="${#fields.hasErrors('email')}? error" class="error">Email must be between 13 and 255 characters.</p>		
 		<p>Password: <input type="text" th:field="*{password}" /></p>
-		<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
+		<p th:if="${#fields.hasErrors('password')}" th:class="${#fields.hasErrors('password')}? error" class="error">Password must be between 5 and 64 characters.</p>
 		<p>FirstName: <input type="text" th:field="*{firstName}" /></p>
+		<p th:if="${#fields.hasErrors('firstName')}" th:class="${#fields.hasErrors('firstName')}? error" class="error">First name must be between 2 and 20 characters.</p>
 		<p>LastName: <input type="text" th:field="*{lastName}" /></p>
+		<p th:if="${#fields.hasErrors('lastName')}" th:class="${#fields.hasErrors('lastName')}? error" class="error">Last name must be between 2 and 20 characters.</p>
 		<p><input type="submit" value="Submit" /></p>
 	</form>
 </body>

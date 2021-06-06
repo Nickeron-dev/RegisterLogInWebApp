@@ -33,36 +33,23 @@ public class AppController {
 	}
 	
 	@PostMapping("/register")
-	public String registerSubmit(@ModelAttribute User newUser, Model model) {
-		model.addAttribute("user", newUser);
-		
-		System.out.println("Email: " + newUser.getEmail().length() + " F name: " + newUser.getFirstName().length() + " L name: " + newUser.getLastName().length() + " Pass: " + newUser.getPassword().length());
-		
+	public String registerSubmit(@Valid @ModelAttribute User newUser, BindingResult result, Model model) {
 		
 		// checking all possible issues
 		List<User> users = repository.findAll();
-		
 		for (int i = 0; i < users.size(); i++) {
 			if (users.get(i).getEmail().equals(newUser.getEmail()) ) {
-				return "erroranother";	// if an email has already been used
+				return "registererror";	// if an email has already been used
 			}
 		}
 		
-		if (newUser.getEmail().length() < 13) {
-			return "erroranother";
+		if (result.hasErrors()) {
+			return "register";
 		}
 		
-		if (newUser.getFirstName().length() < 2 || newUser.getFirstName().length() > 20) {
-			return "erroranother";
-		}
+		model.addAttribute("user", newUser);
 		
-		if (newUser.getLastName().length() < 2 || newUser.getLastName().length() > 20) {
-			return "erroranother";
-		}
-		
-		if (newUser.getPassword().length() < 5 || newUser.getPassword().length() > 64) {
-			return "erroranother";
-		}
+		System.out.println("Email: " + newUser.getEmail().length() + " F name: " + newUser.getFirstName().length() + " L name: " + newUser.getLastName().length() + " Pass: " + newUser.getPassword().length());
 		
 		repository.save(newUser);
 		
@@ -80,5 +67,27 @@ public class AppController {
 	public String loginForm(Model model) {
 		model.addAttribute("user", new User());
 		return "login";
+	}
+	
+	@PostMapping("/login")
+	public String loginSubmit(@Valid @ModelAttribute User user, BindingResult result, Model model) {
+		List<User> users = repository.findAll();
+		System.out.println("Received: " + user.getEmail() + " " + user.getPassword());
+		for (int i = 0; i < users.size(); i++) {
+			System.out.println("Comparing: " + users.get(i).getEmail() + " " + users.get(i).getPassword());
+			if (users.get(i).getEmail().equals(user.getEmail()) && users.get(i).getPassword().equals(user.getPassword()) ) {
+				return "loginsuccess";
+			}
+		}
+		
+		if (result.hasErrors()) {
+			return "login";
+		}
+		
+		model.addAttribute("user", user);
+		
+		
+		
+		return "loginerror";
 	}
 }
