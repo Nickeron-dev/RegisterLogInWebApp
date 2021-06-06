@@ -21,6 +21,8 @@ public class AppController {
 	@Autowired
 	private UserRepository repository;
 	
+	private boolean isLoggedIn = false;
+	
 	@GetMapping("/home")
 	public String home() {
 		return "home";
@@ -76,6 +78,8 @@ public class AppController {
 		for (int i = 0; i < users.size(); i++) {
 			System.out.println("Comparing: " + users.get(i).getEmail() + " " + users.get(i).getPassword());
 			if (users.get(i).getEmail().equals(user.getEmail()) && users.get(i).getPassword().equals(user.getPassword()) ) {
+				isLoggedIn = true;
+				model.addAttribute("users", users);
 				return "loginsuccess";
 			}
 		}
