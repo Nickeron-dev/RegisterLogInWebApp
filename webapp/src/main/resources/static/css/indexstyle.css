@@ -1,0 +1,23 @@
+body {
+	background-color: #019FD7;
+}
+
+h1 {
+	color: yellow;
+}
+
+.bodyClass {
+	background-color: #019FD7;
+}
+
+.hClass {
+	color: yellow;
+}
+
+.aClass {
+	color: blue;
+}
+
+.text {
+	color: red;
+}
