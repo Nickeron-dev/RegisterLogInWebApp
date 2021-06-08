@@ -1,23 +1,47 @@
 body {
-	background-color: #019FD7;
+	margin: 0;
+	background: url('/img/background.jpg') no-repeat center center fixed;
+	background-size: cover;
+	background-color: #7DC2AD;
 }
 
-h1 {
-	color: yellow;
+.home {
+	color: #EEF9FC;
 }
 
-.bodyClass {
-	background-color: #019FD7;
+header {
+	font: 2em;
 }
 
-.hClass {
-	color: yellow;
+.register {
+	position: absolute;
+	bottom: 10px;
+	margin-left: 830px;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 2em;
 }
 
-.aClass {
-	color: blue;
+.register:hover {
+	background-color: #ddd;
+	color: black;
 }
 
-.text {
-	color: red;
+.login {
+	
+	position: absolute;
+	bottom: 10px;
+	margin-left: 960px;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 2em;
+}
+
+.login:hover {
+	background-color: #ddd;
+	color: black;
 }
