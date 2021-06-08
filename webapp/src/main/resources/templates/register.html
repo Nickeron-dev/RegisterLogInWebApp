@@ -3,20 +3,23 @@
 <head>
 	<title>Register</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" type="text/css" href="/css/registerstyle.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/register.css"/>
 </head>
 <body class="bodyClass">
-		<h1>Register</h1>
-	<form action="#" th:action="@{/register}" th:object="${user}" method="post">
-		<p>Email: <input type="text" th:field="*{email}" /></p>
-		<p th:if="${#fields.hasErrors('email')}" th:class="${#fields.hasErrors('email')}? error" class="error">Email must be between 13 and 255 characters.</p>		
-		<p>Password: <input type="text" th:field="*{password}" /></p>
-		<p th:if="${#fields.hasErrors('password')}" th:class="${#fields.hasErrors('password')}? error" class="error">Password must be between 5 and 64 characters.</p>
-		<p>FirstName: <input type="text" th:field="*{firstName}" /></p>
-		<p th:if="${#fields.hasErrors('firstName')}" th:class="${#fields.hasErrors('firstName')}? error" class="error">First name must be between 2 and 20 characters.</p>
-		<p>LastName: <input type="text" th:field="*{lastName}" /></p>
-		<p th:if="${#fields.hasErrors('lastName')}" th:class="${#fields.hasErrors('lastName')}? error" class="error">Last name must be between 2 and 20 characters.</p>
-		<p><input type="submit" value="Submit" /></p>
-	</form>
+			
+			<h1><a href="home" class="backHome"><img src="/img/up.png" width="50"></a>Sign Up</h1>
+		<form action="#" th:action="@{/register}" th:object="${user}" method="post">
+			<p><input type="text" th:field="*{email}" placeholder="Email..." class="fields"/></p>
+			<p th:if="${#fields.hasErrors('email')}" th:class="${#fields.hasErrors('email')}? error" class="error">Email must be between 13 and 255 characters.</p>		
+			<p><input type="text" th:field="*{password}" placeholder="Password..." class="fields"/></p>
+			<p th:if="${#fields.hasErrors('password')}" th:class="${#fields.hasErrors('password')}? error" class="error">Password must be between 5 and 64 characters.</p>
+			<p><input type="text" th:field="*{firstName}" placeholder="First name..." class="fields"/></p>
+			<p th:if="${#fields.hasErrors('firstName')}" th:class="${#fields.hasErrors('firstName')}? error" class="error">First name must be between 2 and 20 characters.</p>
+			<p><input type="text" th:field="*{lastName}" placeholder="Last name..." class="fields"/></p>
+			<p th:if="${#fields.hasErrors('lastName')}" th:class="${#fields.hasErrors('lastName')}? error" class="error">Last name must be between 2 and 20 characters.</p>
+			<p><input type="submit" value="Submit" class="button" /></p>
+		</form>
+	<p class="question">Already have an account?</p>
+	<a href="login" class="logIn">Log In</a>
 </body>
 </html>
