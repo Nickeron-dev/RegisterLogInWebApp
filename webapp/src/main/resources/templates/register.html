@@ -6,8 +6,10 @@
 	<link rel="stylesheet" type="text/css" href="/css/register.css"/>
 </head>
 <body class="bodyClass">
-			
-			<h1><a href="home" class="backHome"><img src="/img/up.png" width="50"></a>Sign Up</h1>
+	<header>
+		<a href="/home" class="aHome"><img src="/img/up.png" width="40" class="imgC">HOME</a>
+	</header>
+			<h1>Sign Up</h1>
 		<form action="#" th:action="@{/register}" th:object="${user}" method="post">
 			<p><input type="text" th:field="*{email}" placeholder="Email..." class="fields"/></p>
 			<p th:if="${#fields.hasErrors('email')}" th:class="${#fields.hasErrors('email')}? error" class="error">Email must be between 13 and 255 characters.</p>		
@@ -20,6 +22,6 @@
 			<p><input type="submit" value="Submit" class="button" /></p>
 		</form>
 	<p class="question">Already have an account?</p>
-	<a href="login" class="logIn">Log In</a>
+	<a href="login" class="logIn"><b>Log In!</b></a>
 </body>
 </html>

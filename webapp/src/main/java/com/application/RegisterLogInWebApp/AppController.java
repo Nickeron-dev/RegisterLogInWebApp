@@ -25,7 +25,7 @@ public class AppController {
 	
 	@GetMapping("/home")
 	public String home() {
-		return "home";
+		return "index";
 	}
 	
 	@GetMapping("/register")
@@ -90,4 +90,5 @@ public class AppController {
 		
 		return "loginerror";
 	}
+
 }

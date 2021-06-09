@@ -25,15 +25,8 @@ header {
 	padding-bottom: 2px;
 }
 
-
 h1 {
 	color: #EEF9FC;
-}
-
-.form {
-	margin-left: 500px;
-	margin-right:500px;
-	background-color: blue;
 }
 
 .fields {
@@ -53,21 +46,17 @@ h1 {
 	width: 150px;
 }
 
-.logIn {
+.signup {
 	padding: 14px 16px;
 	background-color: #FCC230;
 	text-decoration: none;
 	color: black;
 }
 
-.logIn:hover {
+.signup:hover {
 	background-color: #EEF9FC;
 }
 
 .question {
 	color: #EEF9FC;
-}
-
-.error {
-	color: #E8A87C;
 }
