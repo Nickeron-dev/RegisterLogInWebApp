@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,7 +43,9 @@ public class AppController {
 		List<User> users = repository.findAll();
 		for (int i = 0; i < users.size(); i++) {
 			if (users.get(i).getEmail().equals(newUser.getEmail()) ) {
-				return "registererror";	// if an email has already been used
+					// if an email has already been used
+				 result.addError(new FieldError("user", "email", "email"));
+				 return "register";
 			}
 		}
 		
