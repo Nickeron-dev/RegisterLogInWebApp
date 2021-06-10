@@ -20,6 +20,7 @@ public class User {
 	
 	@NotEmpty(message = "User's email cannot be empty.")
     @Size(min = 13, max = 255)
+	@Email
 	@Column(name = "email", nullable = false, unique = true)
 	private String email;
 	
@@ -37,7 +38,8 @@ public class User {
     @Size(min = 2, max = 20)
 	@Column(name = "lastName", nullable = false, length = 20)
 	private String lastName;
-
+	
+	// getters and setters
 	public Integer getId() {
 		return id;
 	}
@@ -77,6 +79,5 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
 	
 }

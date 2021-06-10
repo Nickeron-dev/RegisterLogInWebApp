@@ -3,18 +3,17 @@
 <head>
 	<title>Log In</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" type="text/css" href="/css/login.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/loginstyle.css"/>
 </head>
 <body>
 	<header>
-	<a href="/home" class="aHome"><img src="/img/up.png" width="40" class="imgC">HOME</a>
+	<a href="/home" class="aHome"><img src="/img/left.png" width="40" class="imgC">HOME</a>
 	</header>
 		<h1>Log In</h1>
 	<form action="#" th:action="@{login}" th:object="${user}" method="post">
 		<p><input type="text" th:field="*{email}" placeholder="Email..." class="fields"></p>
-		<p th:if="${#fields.hasErrors('email')}" th:class="${#fields.hasErrors('email')}? error" class="error">Email must be between 13 and 255 characters.</p>
 		<p><input type="text" th:field=*{password} placeholder="Password..." class="fields"></p>
-		<p th:if="${#fields.hasErrors('password')}" th:class="${#fields.hasErrors('password')}? error" class="error">Password must be between 5 and 64 characters.</p>
+		<p th:if="${#fields.hasErrors('password')}" th:class="${#fields.hasErrors('password')}? error" class="error">Email or password is incorrect!</p>
 		<input type="submit" action="Submit" class="button">
 	</form>
 	<p class="question">Don't have an account?</p>

@@ -9,13 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import net.bytebuddy.matcher.ModifierMatcher.Mode;
 
 @Controller
 public class AppController {
@@ -23,11 +19,9 @@ public class AppController {
 	@Autowired
 	private UserRepository repository;
 	
-	private boolean isLoggedIn = false;
-	
 	@GetMapping("/home")
 	public String home() {
-		return "index";
+		return "index"; // home page
 	}
 	
 	@GetMapping("/register")
@@ -37,36 +31,35 @@ public class AppController {
 	}
 	
 	@PostMapping("/register")
-	public String registerSubmit(@Valid @ModelAttribute User newUser, BindingResult result, Model model) {
+	public String registerSubmit(@Valid @ModelAttribute User newUser,
+			BindingResult result, Model model) {
+		// checking all possible errors
 		
-		// checking all possible issues
+		// here I check if an email has already been used
 		List<User> users = repository.findAll();
+		
 		for (int i = 0; i < users.size(); i++) {
 			if (users.get(i).getEmail().equals(newUser.getEmail()) ) {
-					// if an email has already been used
-				 result.addError(new FieldError("user", "email", "email"));
-				 return "register";
+				result.addError(new FieldError("user", "email", "This email has already been used")); // shows HTML paragraph that has error message
+				return "register"; // return page with showed errors
 			}
 		}
 		
+		// here I check for any other validation errors
 		if (result.hasErrors()) {
 			return "register";
 		}
 		
 		model.addAttribute("user", newUser);
 		
-		System.out.println("Email: " + newUser.getEmail().length() + " F name: " + newUser.getFirstName().length() + " L name: " + newUser.getLastName().length() + " Pass: " + newUser.getPassword().length());
+		repository.save(newUser); // adding new user to database
 		
-		repository.save(newUser);
-		
-		
-		return "registerresult";
-		
+		return "registerresult"; // show successful page
 	}
 	
 	@GetMapping("/error")
 	public String error() {
-		return "error";
+		return "error"; // for any errors(404)
 	}
 	
 	@GetMapping("/login")
@@ -76,23 +69,25 @@ public class AppController {
 	}
 	
 	@PostMapping("/login")
-	public String loginSubmit(@Valid @ModelAttribute User user, BindingResult result, Model model) {
+	public String loginSubmit(@Valid @ModelAttribute User user,
+			BindingResult result, Model model) {
+		// if user with same data exists - return successful page with the entire database
 		List<User> users = repository.findAll();
-		System.out.println("Received: " + user.getEmail() + " " + user.getPassword());
+		
 		for (int i = 0; i < users.size(); i++) {
-			System.out.println("Comparing: " + users.get(i).getEmail() + " " + users.get(i).getPassword());
-			if (users.get(i).getEmail().equals(user.getEmail()) && users.get(i).getPassword().equals(user.getPassword()) ) {
-				isLoggedIn = true;
+			if (users.get(i).getEmail().equals(user.getEmail()) && // checking email
+					users.get(i).getPassword().equals(user.getPassword()) ) {	// checking password
 				model.addAttribute("users", users);
 				return "loginsuccess";
 			}
 		}
 		
+		// if user with same data wasn't found - add error that will make HTML 
+		// paragraph with message visible
+		result.addError(new FieldError("user", "password", "This account doesn't exist!"));
 		model.addAttribute("user", user);
 		
-		
-		
-		return "loginerror";
+		return "login";
 	}
-
+	
 }

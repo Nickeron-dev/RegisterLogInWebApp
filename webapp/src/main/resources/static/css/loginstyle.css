@@ -25,31 +25,42 @@ header {
 	padding-bottom: 2px;
 }
 
-
 h1 {
 	color: #EEF9FC;
 }
 
-.allUsersTable {
-	border-radius: 5px;
-	width: 900px;
-	margin-left: auto;
-	margin-right: auto;
+.fields {
+	border: gray;
 	background-color: #EEF9FC;
-
+	border-radius: 10px;
+	font-size: 1.3em;
+	height: 50px;
+	width: 300px;
 }
 
-.allUsersTable td, .allUsersTable th {
-	border: 1px solid black;
-}
-
-.allUsersTable thead {
+.button {
 	background-color: #FCC230;
+	color: black;
+	font-size: 1.5em;
+	height: 50px;
+	width: 150px;
 }
 
-.allUsersTable tr:nth-child(even) {
-	background-color: #DCDCDC;
+.signup {
+	padding: 14px 16px;
+	background-color: #FCC230;
+	text-decoration: none;
+	color: black;
 }
-.allUsersTable tbody tr:hover {
-	background-color: #ffffba;
+
+.signup:hover {
+	background-color: #EEF9FC;
+}
+
+.question {
+	color: #EEF9FC;
+}
+
+.error {
+	color: #FCC230;;
 }

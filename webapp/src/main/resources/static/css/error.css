@@ -25,25 +25,24 @@ header {
 	padding-bottom: 2px;
 }
 
+
 h1 {
 	color: #EEF9FC;
 }
 
-.fields {
-	border: gray;
-	background-color: #EEF9FC;
-	border-radius: 10px;
-	font-size: 1.3em;
-	height: 50px;
-	width: 300px;
+.logIn {
+	padding: 14px 16px;
+	background-color: #FCC230;
+	text-decoration: none;
+	color: black;
 }
 
-.button {
-	background-color: #FCC230;
-	color: black;
-	font-size: 1.5em;
-	height: 50px;
-	width: 150px;
+.logIn:hover {
+	background-color: #EEF9FC;
+}
+
+.suggestion {
+	color: #EEF9FC;
 }
 
 .signup {
@@ -55,8 +54,4 @@ h1 {
 
 .signup:hover {
 	background-color: #EEF9FC;
-}
-
-.question {
-	color: #EEF9FC;
 }
