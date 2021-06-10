@@ -3,18 +3,21 @@
 <head>
 	<title>Sign In - Success</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" type="text/css" href="/css/loginsuccessstyle.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/loginsuccess.css"/>
 </head>
 <body>
+	<header>
+		<a href="/home" class="aHome"><img src="/img/up.png" width="40" class="imgC">HOME</a>
+	</header>
 		<h1>You've signed in!!!</h1>
 	<table class="allUsersTable">
 		<thead class="allUsersHead">
 			<tr>
-				<td>User Id</td>
-				<td>Email</td>
-				<td>First Name</td>
-				<td>Last Name</td>
-				<td>Password</td>
+				<td><strong>User Id</strong></td>
+				<td><strong>Email</strong></td>
+				<td><strong>First Name</strong></td>
+				<td><strong>Last Name</strong></td>
+				<td><strong>Password</strong></td>
 			</tr>
 		</thead>
 		<tbody>
@@ -25,13 +28,6 @@
 				<td th:text="${user.lastName}">Last Name</td>
 				<td th:text="${user.password}">Password</td>
 			</tr>
-			<!--<c:forEach var="listValue" items="${User}">
-            	<td>${user.id}</td>
-            	<td>${user.email}</td>
-            	<td>${user.firstName}</td>
-            	<td>${user.lastName}</td>
-            	<td>${user.password}</td>
-        	</c:forEach>-->
 		</tbody>
 	</table>
 </body>

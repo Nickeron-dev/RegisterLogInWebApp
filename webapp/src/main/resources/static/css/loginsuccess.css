@@ -1,0 +1,56 @@
+body {
+	margin: 0px;
+	background-color: #019FD7;
+	text-align: center;
+}
+
+header {
+	text-align: left;
+}
+
+.aHome {
+	text-decoration: none;
+	vertical-align: middle;
+	color: black;
+	padding: 14px 16px;
+	background-color: #FCC230;
+}
+
+.aHome:hover {
+	background-color: #EEF9FC;
+}
+
+.imgC {
+	vertical-align: middle;
+	padding-bottom: 2px;
+}
+
+
+h1 {
+	color: #EEF9FC;
+}
+
+.allUsersTable {
+	border-radius: 5px;
+	
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #EEF9FC;
+
+}
+
+.allUsersTable td, .allUsersTable th {
+	border: 1px solid black;
+}
+
+.allUsersTable thead {
+	background-color: #FCC230;
+}
+
+.allUsersTable tr:nth-child(even) {
+	background-color: #DCDCDC;
+}
+.allUsersTable tbody tr:hover {
+	background-color: #ffffba;
+}
