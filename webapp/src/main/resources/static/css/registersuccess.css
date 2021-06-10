@@ -30,24 +30,6 @@ h1 {
 	color: #EEF9FC;
 }
 
-
-.fields {
-	border: gray;
-	background-color: #EEF9FC;
-	border-radius: 10px;
-	font-size: 1.3em;
-	height: 50px;
-	width: 300px;
-}
-
-.button {
-	background-color: #FCC230;
-	color: black;
-	font-size: 1.5em;
-	height: 50px;
-	width: 150px;
-}
-
 .logIn {
 	padding: 14px 16px;
 	background-color: #FCC230;
@@ -61,8 +43,4 @@ h1 {
 
 .question {
 	color: #EEF9FC;
-}
-
-.error {
-	color: #FCC230;;
 }
